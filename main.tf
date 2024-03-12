@@ -1,14 +1,22 @@
 terraform {
   required_providers {
-    datadog = {
-      source = "DataDog/datadog"
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = "~> 2.0"
     }
   }
 }
 
+# Set the variable value in *.tfvars file
+# or using -var="do_token=..." CLI option
+variable "do_token" {}
 
-# Configure the Datadog provider
-provider "datadog" {
-  api_key = var.datadog_api_key
-  app_key = var.datadog_app_key
+# Configure the DigitalOcean Provider
+provider "digitalocean" {
+  token = var.do_token
+}
+
+# Create a web server
+resource "digitalocean_droplet" "web" {
+  # ...
 }
