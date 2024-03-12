@@ -38,11 +38,11 @@ resource "digitalocean_project_resources" "web_project" {
   project = digitalocean_project.costa.id
 
   resources = [
-    digitalocean_droplet.web.urn,
+    digitalocean_droplet.client1.urn,
   ]
 }
 
-resource "digitalocean_droplet" "web" {
+resource "digitalocean_droplet" "client1" {
   name   = "app"
   size   = "s-1vcpu-1gb"  # This is a basic droplet size. Adjust according to your needs.
   image  = "ubuntu-20-04-x64"  # This is the slug for the Ubuntu 20.04 image. You can choose other images.
