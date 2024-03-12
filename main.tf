@@ -16,6 +16,16 @@ provider "digitalocean" {
   token = var.do_token
 }
 
+resource "digitalocean_ssh_key" "default" {
+  name       = "Terraform"
+  public_key = var.ssh_public_key
+}
+
+variable "ssh_public_key" {
+  description = "The public SSH key for DigitalOcean droplet access"
+  type        = string
+}
+
 resource "digitalocean_droplet" "web" {
   name   = "web-server"
   size   = "s-1vcpu-1gb"  # This is a basic droplet size. Adjust according to your needs.
