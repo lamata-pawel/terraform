@@ -38,7 +38,7 @@ resource "digitalocean_project_resources" "web_project" {
   project = digitalocean_project.costa.id
 
   resources = [
-    digitalocean_droplet.client1.urn,
+  
   ]
 }
 
