@@ -16,6 +16,13 @@ provider "digitalocean" {
   token = var.do_token
 }
 
+resource "digitalocean_project" "costa" {
+  name        = "Costa"
+  description = "Costa"
+  purpose     = "Web Application"
+  environment = "Production"
+}
+
 resource "digitalocean_ssh_key" "default" {
   name       = "Terraform"
   public_key = var.ssh_public_key
@@ -52,5 +59,8 @@ resource "digitalocean_droplet" "web" {
               systemctl start nginx
               systemctl enable nginx
               EOF
+
+  # Specify the project ID
+  project = digitalocean_project.example.id
 }
 
