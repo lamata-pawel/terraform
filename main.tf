@@ -33,7 +33,7 @@ resource "digitalocean_droplet" "web" {
   region = "nyc1"  # This is the New York City region. Choose the region closest to your users.
 
   # SSH keys
-  ssh_keys = [var.ssh_fingerprint]  # Ensure you have an SSH key added to your DigitalOcean account and reference its fingerprint here.
+  ssh_keys = [digitalocean_ssh_key.default.fingerprint] # Ensure you have an SSH key added to your DigitalOcean account and reference its fingerprint here.
 
   # Networking
   private_networking = true
